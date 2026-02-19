@@ -1,0 +1,127 @@
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.9375rem;
+    color: #1a1a1a;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────────── */
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1.5rem;
+    height: 3rem;
+    background: #1e293b;
+    color: #f1f5f9;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+}
+
+.nav-links a {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.15s, background 0.15s;
+}
+
+.nav-links a:hover {
+    color: #f1f5f9;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.nav-links a.active {
+    color: #f1f5f9;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Main content ───────────────────────────────────────────────────────── */
+.content {
+    max-width: 1400px;
+    padding: 2rem 1.5rem;
+}
+
+/* ── Page header ────────────────────────────────────────────────────────── */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+.btn-primary {
+    padding: 0.375rem 1rem;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ── Diagram container ──────────────────────────────────────────────────── */
+.diagram-container {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 2rem;
+    overflow: auto;
+}
+
+/* Mermaid replaces the <pre> element in-place with an <svg>.
+   The class is kept on the container div for sizing purposes. */
+.diagram-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ── Empty state ────────────────────────────────────────────────────────── */
+.empty-state {
+    color: #64748b;
+    font-style: italic;
+    padding: 3rem 0;
+}

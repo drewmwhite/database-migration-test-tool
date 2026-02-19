@@ -2,3 +2,4 @@
 .venv
 output/erd.md
 *.pyc
+__pycache__/

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}ERD Viewer — DB Migration Tool{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Entity Relationship Diagram</h1>
+    <button id="regen-btn" class="btn-primary">Regenerate</button>
+</div>
+
+{% if mermaid_source %}
+<div class="diagram-container">
+    <pre class="mermaid">{{ mermaid_source }}</pre>
+</div>
+{% else %}
+<p class="empty-state">
+    No diagram found. Click <strong>Regenerate</strong> to generate one from the database.
+</p>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+<script>
+    document.getElementById('regen-btn').addEventListener('click', async () => {
+        const btn = document.getElementById('regen-btn');
+        btn.disabled = true;
+        btn.textContent = 'Regenerating\u2026';
+        try {
+            const res = await fetch('/erd/regenerate', { method: 'POST' });
+            if (res.ok) {
+                window.location.reload();
+            } else {
+                btn.textContent = 'Error \u2014 try again';
+                btn.disabled = false;
+            }
+        } catch {
+            btn.textContent = 'Network error \u2014 try again';
+            btn.disabled = false;
+        }
+    });
+</script>
+{% endblock %}

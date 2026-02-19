@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DB Migration Tool{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <span class="nav-brand">DB Migration Tool</span>
+        <ul class="nav-links">
+            <li>
+                <a href="/erd"
+                   class="{% if active_page == 'erd' %}active{% endif %}">
+                    ERD Viewer
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
